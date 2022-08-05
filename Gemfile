@@ -12,6 +12,8 @@ gem 'rails', '~> 5.0.1'
 gem 'sqlite3', '~> 1.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+# Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff
+gem 'rails-i18n', '~> 5.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -30,6 +32,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # A library for generate fake data to fill the DB
   gem 'faker'
+
+  gem 'pry-rails'
 end
 
 group :development do
