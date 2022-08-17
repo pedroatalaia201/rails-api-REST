@@ -1,7 +1,10 @@
 namespace :dev do
     desc "Set up the development enviroment"
-
     task setup: :environment do
+        puts 'Resetting the database...'
+        %x(rails db:drop db:create db:migrate)
+        # %x() = Execute on the termianl the commands within the '()'
+
         puts 'Creating kinds..'
         kinds = %w(Friend Work know)
         # the %w is a shortcut for you do not need to use "" 
@@ -43,5 +46,18 @@ namespace :dev do
         end
 
         puts "Success"
+
+        #######################################
+        puts 'Creatting address'
+
+        Contact.all.each do |contact|
+            Address.create!(
+                street: Faker::Address.street_address,
+                city: Faker::Address.city,
+                contact: contact
+            )
+        end
+
+        puts 'Success'
     end
 end
